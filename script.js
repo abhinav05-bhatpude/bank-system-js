@@ -3,4 +3,8 @@ class Account{
         this.name=name;
         this.balance=balance;
     }
+    
+    deposit(amount){
+        this.balance+=amount
+    }
 }
