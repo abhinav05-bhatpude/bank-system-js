@@ -21,3 +21,9 @@ class Account{
         console.log(`Balance: ${this.balance}`);
     }
 }
+
+const user1=new Account("Abhinav",1000);
+
+user1.deposit(500);
+user1.withdraw(200);
+user1.checkBalance();
