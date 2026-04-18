@@ -22,6 +22,11 @@ class Account{
     checkBalance(){
         console.log(`Balance: ${this.balance}`);
     }
+    getAccountInfo(){
+        console.log(`Name: ${this.name}`);
+        console.log(`balance: ${this.balance}`);
+        console.log(`Account No: ${this.accountNumber}`);
+    }
 }
 
 const user1=new Account("Abhinav",1000);
