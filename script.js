@@ -8,6 +8,7 @@ class Account{
     deposit(amount){
         if(amount>0){
             this.balance+=amount;
+            console.log(`${this.name} deposited ${amount}`);
         }
     }
     withdraw(amount){
