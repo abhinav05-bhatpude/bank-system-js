@@ -29,6 +29,10 @@ class Account{
     }
 }
 
+class SavingsAccount extends Account{
+    
+}
+
 const user1=new Account("Abhinav",1000);
 const user2=new Account("Rahul",1000);
 
