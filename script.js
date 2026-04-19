@@ -5,6 +5,8 @@ class Account{
         this.balance=balance;
         this.accountNumber=Date.now();
         
+        Account.totalAccounts++;
+
     }
 
     deposit(amount){
