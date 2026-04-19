@@ -35,8 +35,10 @@ class SavingsAccount extends Account{
         this.interestRate=interestRate;
     }
     addInterest(){
-        const interest=(this.balance * this.interestRate)/100;
-        this.balance+=interest;
+        if(this.balance>0){
+            const interest=(this.balance * this.interestRate)/100;
+            this.balance+=interest;
+        }
 
     }
 }
