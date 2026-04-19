@@ -34,6 +34,11 @@ class SavingsAccount extends Account{
         super(name,balance);
         this.interestRate=interestRate;
     }
+    addInterest(){
+        const interest=(this.balance * this.interestRate)/100;
+        this.balance+=interest;
+        
+    }
 }
 
 const user1=new Account("Abhinav",1000);
