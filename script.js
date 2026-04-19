@@ -53,6 +53,11 @@ class SavingsAccount extends Account{
 
 const user1=new Account("Abhinav",1000);
 const user2=new Account("Rahul",1000);
+const user3=new Account("Aniket",400);
+const user4=new Account("Yash",2500);
+const user5=new Account("Pritesh",4800);
+
+Account.showTotalAccounts();
 
 user2.deposit(500);      
 user2.addInterest();     
