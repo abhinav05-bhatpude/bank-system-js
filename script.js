@@ -30,7 +30,10 @@ class Account{
 }
 
 class SavingsAccount extends Account{
-    
+    constructor(name,balance,interestRate){
+        super(name,balance);
+        this.interestRate=interestRate;
+    }
 }
 
 const user1=new Account("Abhinav",1000);
