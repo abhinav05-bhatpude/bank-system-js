@@ -4,7 +4,7 @@ class Account{
         this.name=name;
         this.balance=balance;
         this.accountNumber=Date.now();
-        
+
         Account.totalAccounts++;
 
     }
@@ -30,6 +30,10 @@ class Account{
         console.log(`Name: ${this.name}`);
         console.log(`balance: ${this.balance}`);
         console.log(`Account No: ${this.accountNumber}`);
+    }
+
+    static showTotalAccounts(){
+        console.log(`Total Accounts : ${Account.totalAccounts}`);
     }
 }
 
