@@ -1,8 +1,10 @@
 class Account{
+    static totalAccounts=0;
     constructor(name,balance){
         this.name=name;
         this.balance=balance;
         this.accountNumber=Date.now();
+        
     }
 
     deposit(amount){
