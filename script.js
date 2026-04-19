@@ -1,5 +1,6 @@
 class Account{
     static totalAccounts=0;
+    static bankName="MyBank";
     constructor(name,balance){
         this.name=name;
         this.balance=balance;
