@@ -27,3 +27,12 @@ button{
     border:none;
     border-radius: 5px;
 }
+.button-section{
+    margin-top:10px;
+}
+.output-section{
+    margin-top:15px;
+    padding:10px;
+    background: #f1f1f1;
+    border-radius: 5px;
+}
