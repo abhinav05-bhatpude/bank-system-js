@@ -74,4 +74,20 @@ createBtn.addEventListener("click",function(){
     user=new Account(name,amount);
 
     output.innerText=`Account created for ${user.name} ✅`
-})
+});
+
+depositBtn.addEventListener("click",function(){
+    if(!user){
+        output.innerText="Create account first ❌";
+        return;
+    }
+    const amount=Number(amountInput.value);
+
+    if(amount <=0){
+        output.innerText="Enter valid amount ❌";
+        return;
+    }
+    user.deposit(amount);
+    output.innerText= `Deposited ${amount} successfully ✅`;
+
+});
