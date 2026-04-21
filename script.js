@@ -91,3 +91,25 @@ depositBtn.addEventListener("click",function(){
     output.innerText= `Deposited ${amount} successfully ✅`;
 
 });
+
+withdrawBtn.addEventListener("click",function(){
+    if(!user){
+        output.innerText="Create account first ❌";
+        return;
+    }
+
+    const amount=Number(amountInput.value);
+
+    if(amount <=0){
+        output.innerText="Enter valid amount ❌";
+        return;
+    }
+    if(amount > user.balance){
+        output.innerText="Insufficient balance ❌";
+        return
+    }
+
+    user.withdraw(amount);
+
+    output.innerText=`Withdraw ${amount} succesfully`;
+})
