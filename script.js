@@ -113,3 +113,19 @@ withdrawBtn.addEventListener("click",function(){
 
     output.innerText=`Withdraw ${amount} succesfully`;
 })
+
+showBtn.addEventListener("click", function() {
+  if (!user) {
+    output.innerText = "Create account first ❌";
+    return;
+  }
+
+  output.innerText = `
+Name: ${user.name}
+Balance: ₹${user.balance}
+Account No: ${user.accountNumber}
+
+Total Accounts: ${Account.totalAccounts}
+Bank: ${Account.bankName}
+  `;
+});
