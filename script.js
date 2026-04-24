@@ -67,7 +67,7 @@ const output = document.getElementById("message");
 let user;
 createBtn.addEventListener("click",function(){
     const name=nameInput.value.trim();
-    const amount=Number(amountInput.value);
+    const amount=Number(balanceInput.value);
 
     if(!name || amount <=0){
         output.innerText="Enter valid input ❌";
@@ -83,7 +83,7 @@ depositBtn.addEventListener("click",function(){
         output.innerText="Create account first ❌";
         return;
     }
-    const amount=Number(amountInput.value);
+    const amount=Number(balanceInput.value);
 
     if(amount <=0){
         output.innerText="Enter valid amount ❌";
@@ -100,7 +100,7 @@ withdrawBtn.addEventListener("click",function(){
         return;
     }
 
-    const amount=Number(amountInput.value);
+    const amount=Number(balanceInput.value);
 
     if(amount <=0){
         output.innerText="Enter valid amount ❌";
