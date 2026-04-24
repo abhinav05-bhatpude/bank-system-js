@@ -53,7 +53,9 @@ class SavingsAccount extends Account{
 }
 
 const nameInput = document.getElementById("name");
-const amountInput = document.getElementById("amount");
+const balanceInput = document.getElementById("balance");
+const depositInput=document.getElementById("depositAmount");
+const withdrawInput=document.getElementById("withdrawAmount");
 
 const createBtn = document.getElementById("createBtn");
 const depositBtn = document.getElementById("depositBtn");
