@@ -1,61 +1,29 @@
-class Account{
-    static totalAccounts=0;
-    static bankName="MyBank";
-    constructor(name,balance){
-        this.name=name;
-        this.balance=balance;
-        this.accountNumber=Date.now();
+class Account {
+  static totalAccounts = 0;
+  static bankName = "MyBank";
 
-        Account.totalAccounts++;
+  constructor(name, balance) {
+    this.name = name;
+    this.balance = balance;
+    this.accountNumber = Date.now();
+    Account.totalAccounts++;
+  }
 
-    }
+  deposit(amount) {
+    if (amount > 0) this.balance += amount;
+  }
 
-    deposit(amount){
-        if(amount>0){
-            this.balance+=amount;
-            console.log(`${this.name} deposited ${amount}`);
-        }
-    }
-    withdraw(amount){
-        if(amount>this.balance){
-            console.log("Insuffecient Balance");
-        }
-        else{
-            this.balance-=amount;
-        }
-    }
-    checkBalance(){
-        console.log(`Balance: ${this.balance}`);
-    }
-    getAccountInfo(){
-        console.log(`Name: ${this.name}`);
-        console.log(`balance: ${this.balance}`);
-        console.log(`Account No: ${this.accountNumber}`);
-    }
-
-    static showTotalAccounts(){
-        console.log(`Total Accounts : ${Account.totalAccounts}`);
-    }
+  withdraw(amount) {
+    if (amount > this.balance) return false;
+    this.balance -= amount;
+    return true;
+  }
 }
 
-class SavingsAccount extends Account{
-    constructor(name,balance,interestRate){
-        super(name,balance);
-        this.interestRate=interestRate;
-    }
-    addInterest(){
-        if(this.balance>0){
-            const interest=(this.balance * this.interestRate)/100;
-            this.balance+=interest;
-        }
-
-    }
-}
-
-const nameInput = document.getElementById("name");
-const balanceInput = document.getElementById("balance");
-const depositInput=document.getElementById("depositAmount");
-const withdrawInput=document.getElementById("withdrawAmount");
+const nameInput = document.getElementById("nameInput");
+const balanceInput = document.getElementById("balanceInput");
+const depositInput = document.getElementById("depositInput");
+const withdrawInput = document.getElementById("withdrawInput");
 
 const createBtn = document.getElementById("createBtn");
 const depositBtn = document.getElementById("depositBtn");
@@ -64,70 +32,75 @@ const showBtn = document.getElementById("showBtn");
 
 const output = document.getElementById("message");
 
-let user;
-createBtn.addEventListener("click",function(){
-    const name=nameInput.value.trim();
-    const amount=Number(balanceInput.value);
+let user = null;
 
-    if(!name || amount <=0){
-        output.innerText="Enter valid input ❌";
-        return;
-    }
-    user=new Account(name,amount);
+createBtn.addEventListener("click", () => {
+  const name = nameInput.value.trim();
+  const balance = Number(balanceInput.value);
 
-    output.innerText=`Account created for ${user.name} ✅`
+  if (!name || balance <= 0) {
+    output.innerText = "Enter valid name and balance ❌";
+    return;
+  }
+
+  user = new Account(name, balance);
+  output.innerText = `Account created for ${user.name} ✅`;
+
+  nameInput.value = "";
+  balanceInput.value = "";
 });
 
-depositBtn.addEventListener("click",function(){
-    if(!user){
-        output.innerText="Create account first ❌";
-        return;
-    }
-    const amount=Number(balanceInput.value);
-
-    if(amount <=0){
-        output.innerText="Enter valid amount ❌";
-        return;
-    }
-    user.deposit(amount);
-    output.innerText= `Deposited ${amount} successfully ✅`;
-
-});
-
-withdrawBtn.addEventListener("click",function(){
-    if(!user){
-        output.innerText="Create account first ❌";
-        return;
-    }
-
-    const amount=Number(balanceInput.value);
-
-    if(amount <=0){
-        output.innerText="Enter valid amount ❌";
-        return;
-    }
-    if(amount > user.balance){
-        output.innerText="Insufficient balance ❌";
-        return
-    }
-
-    user.withdraw(amount);
-
-    output.innerText=`Withdraw ${amount} succesfully`;
-})
-
-showBtn.addEventListener("click", function() {
+depositBtn.addEventListener("click", () => {
   if (!user) {
     output.innerText = "Create account first ❌";
     return;
   }
 
-  output.innerText = `
-Name: ${user.name}
-Balance: ₹${user.balance}
-Account No: ${user.accountNumber}
+  const amount = Number(depositInput.value);
 
-Total Accounts: ${Account.totalAccounts}
-Bank: ${Account.bankName}
+  if (amount <= 0) {
+    output.innerText = "Enter valid deposit amount ❌";
+    return;
+  }
+
+  user.deposit(amount);
+  output.innerText = `Deposited ₹${amount} ✅`;
+  depositInput.value = "";
+});
+
+withdrawBtn.addEventListener("click", () => {
+  if (!user) {
+    output.innerText = "Create account first ❌";
+    return;
+  }
+
+  const amount = Number(withdrawInput.value);
+
+  if (amount <= 0) {
+    output.innerText = "Enter valid withdraw amount ❌";
+    return;
+  }
+
+  if (!user.withdraw(amount)) {
+    output.innerText = "Insufficient balance ❌";
+    return;
+  }
+
+  output.innerText = `Withdrawn ₹${amount} ✅`;
+  withdrawInput.value = "";
+});
+
+showBtn.addEventListener("click", () => {
+  if (!user) {
+    output.innerText = "Create account first ❌";
+    return;
+  }
+
+  output.innerHTML = `
+    <strong>Name:</strong> ${user.name} <br>
+    <strong>Balance:</strong> ₹${user.balance} <br>
+    <strong>Account No:</strong> ${user.accountNumber} <br><br>
+    <strong>Total Accounts:</strong> ${Account.totalAccounts} <br>
+    <strong>Bank:</strong> ${Account.bankName}
   `;
 });
