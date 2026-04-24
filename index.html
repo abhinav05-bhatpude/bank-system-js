@@ -2,42 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bank System</title>
+  <title>Bank Management System</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
 
-    <h1>🏦 Bank System</h1>
+    <h1>🏦 Bank Management System</h1>
 
-    <div class="input-section">
-      <input id="name" type="text" placeholder="Enter Name">
-      <input id="balance" type="number" placeholder="Initial Balance">
-    </div>
-
-    <div class="transcation-section">
-      <input type="number" id="depositAmount" placeholder="Deposit Amount">
-      <button id="depositBtn">Deposit</button>
-
-      <input type="number" id="withdrawAmount" placeholder="Withdraw Amount">
-      <button id="withdrawBtn">Withdraw</button>
-    </div>
-
-    <div class="button-section">
+    <!-- Create Account Section -->
+    <div class="section">
+      <h2>Create Account</h2>
+      <input id="nameInput" type="text" placeholder="Enter Name">
+      <input id="balanceInput" type="number" placeholder="Initial Balance">
       <button id="createBtn">Create Account</button>
-      <button id="depositBtn">Deposit</button>
-      <button id="withdrawBtn">Withdraw</button>
-      <button id="showBtn">Show Details</button>
     </div>
 
-    <div id="output" class="output-section">
-      <p id="message">Account details will appear here</p>
+    <!-- Deposit Section -->
+    <div class="section">
+      <h2>Deposit Money</h2>
+      <input id="depositInput" type="number" placeholder="Enter Amount">
+      <button id="depositBtn">Deposit</button>
+    </div>
+
+    <!-- Withdraw Section -->
+    <div class="section">
+      <h2>Withdraw Money</h2>
+      <input id="withdrawInput" type="number" placeholder="Enter Amount">
+      <button id="withdrawBtn">Withdraw</button>
+    </div>
+
+    <!-- Actions -->
+    <div class="section">
+      <button id="showBtn">Show Account Details</button>
+    </div>
+
+    <!-- Output -->
+    <div id="output" class="output">
+      <p id="message">No account created yet</p>
     </div>
 
   </div>
 
+  <script src="script.js"></script>
 
 </body>
-  <script src="script.js"></script>
 </html>
